@@ -63,7 +63,7 @@ jobs:
           show-progress: ${{ runner.debug == '1' && 'true' || 'false' }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -101,7 +101,7 @@ jobs:
         run: git diff --exit-code
 
       - name: Upload ZIP as a GitHub Actions artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: ${{ inputs.save-build || inputs.prepare-playground }}
         with:
           name: wordpress-build-${{ github.event_name == 'pull_request' && github.event.number || github.sha }}
@@ -117,7 +117,7 @@ jobs:
       # Uploads the PR number as an artifact for the Pull Request Commenting workflow to download and then
       # leave a comment detailing how to test the PR within WordPress Playground.
       - name: Upload PR number as artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: ${{ inputs.prepare-playground && github.repository == 'WordPress/wordpress-develop' && github.event_name == 'pull_request' }}
         with:
           name: pr-number
